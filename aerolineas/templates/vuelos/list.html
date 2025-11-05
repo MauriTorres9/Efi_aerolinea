@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %}Lista de Vuelos{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <h2 class="mb-4 text-center text-dark">
+        <i class="bi bi-airplane-engines"></i> Lista de Vuelos
+    </h2>
+
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+        {% for vuelo in vuelos %}
+        <div class="col">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body">
+                    <h5 class="card-title text-primary">
+                        <i class="bi bi-airplane-fill me-2"></i>{{ vuelo.avion }}
+                    </h5>
+                    <p class="card-text">
+                        <span class="fw-semibold"><i class="bi bi-geo-alt-fill"></i> <strong>Origen:</strong></span> {{ vuelo.origen }}<br>
+                        <span class="fw-semibold"><i class="bi bi-flag-fill"></i> <strong>Destino:</strong></span> {{ vuelo.destino }}<br>
+                        <span class="fw-semibold"><i class="bi bi-clock-fill"></i> <strong>Salida:</strong></span> {{ vuelo.fecha_salida }}<br>
+                        <span class="fw-semibold"><i class="bi bi-hourglass-split"></i> <strong>Llegada:</strong></span> {{ vuelo.fecha_llegada }}
+
+                    </p>
+                    <a href="{% url 'disponibilidad_asientos' vuelo.id %}" class="btn btn-outline-primary mt-3">
+                        <i class="bi bi-eye-fill"></i> Ver Asientos
+                    </a>
+                    <a href="{% url 'vuelos_detail' vuelo.id %}" class="btn btn-outline-primary mt-3">
+                        <i class="bi bi-eye-fill"></i> Ver Detalle
+                    </a>
+                    <a href="{% url 'vuelos_delete' vuelo.id %}" class="btn btn-outline-danger mt-3">
+                        <i class="bi bi-trash-fill"></i> Eliminar Vuelo
+                    </a>    
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="col-12">
+            <div class="alert alert-info text-center" role="alert">
+                No hay vuelos registrados en este momento.
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

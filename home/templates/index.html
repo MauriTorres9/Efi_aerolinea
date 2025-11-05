@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}EFI Aerolineas - Bienvenido{% endblock %}
+
+{% block content %}
+<div class="text-white py-5 d-flex justify-content-center align-items-center" style="min-height: 100vh-70vh;">
+  <div id="home-card" class="p-5 text-center">
+    <i class="bi bi-send-fill text-info" style="font-size: 4rem;"></i>
+    <h1 class="mt-3">¡Bienvenido a EFI Aerolineas!</h1>
+
+    {% if not user.is_authenticated %}
+      <div class="d-flex flex-column flex-md-row justify-content-center mt-4">
+        <a href="{% url 'login' %}" class="btn btn-outline-light btn-lg m-2">Iniciar sesión</a>
+        <a href="{% url 'register' %}" class="btn btn-info btn-lg text-white m-2">Crear cuenta</a>
+      </div>
+    {% else %}
+      <div class="d-flex flex-wrap justify-content-center mt-4">
+        <a href="{% url 'vuelos_list' %}" class="btn btn-success btn-lg m-2">
+          <i class="bi bi-airplane-fill"></i> Mis vuelos
+        </a>
+        <a href="{% url 'reservas_list' %}" class="btn btn-primary btn-lg m-2">
+          <i class="bi bi-ticket-perforated-fill"></i> Mis reservas
+        </a>
+        <a href="{% url 'logout' %}" class="btn btn-outline-danger btn-lg m-2">
+          <i class="bi bi-box-arrow-right"></i> Salir
+        </a>
+      </div>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}
