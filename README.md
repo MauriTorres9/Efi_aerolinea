@@ -1,7 +1,12 @@
 ✅ README — Sistema de Gestión de Aerolínea (EFI Final)
 
-Autor: Mauricio Torres
-Materia: Programación / Backend – Django + DRF
+Autores: 
+Mauricio Torres
+Jeremias Herrrera
+Arnold Grandberg
+
+Materia: ingenieria de software
+
 Año: 2025
 
 ✈️ 1. Descripción del Proyecto
